@@ -1,11 +1,11 @@
 {
   "devDependencies": {
-    "cypress": "12.12"
+    "cypress": "^13.3.3"
   },
   "scripts": {
     "open": "cypress open",
-    "run": "cypress run",
-    "run:saveLogs": "CYPRESS_INTERNAL_MEMORY_SAVE_STATS=1 cypress run"
+    "run": "cypress run --browser chrome",
+    "run:saveLogs": "DEBUG=cypress*memory cypress run --browser chrome"
   },
   "type": "module"
 }

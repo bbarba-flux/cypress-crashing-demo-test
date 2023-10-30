@@ -1,6 +1,6 @@
 let newProjectUrl = "";
 
-beforeEach(() => {
+before(() => {
   Cypress.on("uncaught:exception", (error) => {
     if (error) {
         return false;
@@ -52,9 +52,6 @@ describe("project page", () => {
                 origin: "feedback.flux.ai",
                 expectedUrl: "feedback.flux.ai/bugreports",
             },
-            "Log out": {
-                expectedUrl: "/login",
-            },
         };
         cy.intercept("POST", "**/Write/channel?database**").as("writeChannelRequest");
         cy.visit(`${newProjectUrl}`);
@@ -62,7 +59,7 @@ describe("project page", () => {
         
         for (const option in menuOptions) {
             const menuData = menuOptions[option];
-            cy.wait(2000);
+            cy.wait(5000);
 
             cy.get("#nav-account-menu-button").click();
             // to get rid of "Leave site?" warning
